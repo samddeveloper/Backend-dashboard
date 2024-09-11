@@ -1,24 +1,11 @@
-const User = require("../models/UserModel");
-const jwt = require("jsonwebtoken");
+const loginUser = async (req, res) => {
+  // Ignorera email och lösenord och returnera alltid framgång
+  const token = "fake-jwt-token"; // En generisk token
 
-exports.loginUser = async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    // Hitta användaren via e-post
-    const user = await User.findOne({ email });
-
-    if (user && (await user.matchPassword(password))) {
-      // Generera JWT-token
-      const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-        expiresIn: "30d",
-      });
-      res.json({ token });
-    } else {
-      res.status(401).json({ message: "Invalid email or password" });
-    }
-  } catch (error) {
-    console.error("Server error during login", error);
-    res.status(500).json({ message: "Server error" });
-  }
+  return res.json({
+    token, // Returnera en token som alltid fungerar
+    message: "Login successful",
+  });
 };
+
+module.exports = { loginUser };
