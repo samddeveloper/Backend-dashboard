@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 
 // Anslut till databasen
-connectDB(); // Anropa anslutningen här
+connectDB();
 
 // Middleware för att tillåta CORS från din frontend på Vercel
 app.use(
