@@ -15,7 +15,8 @@ connectDB(); // Anropa anslutningen här
 // Middleware för att tillåta CORS från din frontend på Vercel
 app.use(
   cors({
-    origin: "https://dashboard-bzzkcvzx1-sammies-projects-4f71ae26.vercel.app/", // Ersätt med din Vercel frontend URL
+    origin:
+      "https://dashboard-bzzkcvzx1-sammies-projects-4f71ae26.vercel.app/dashboard", // Ersätt med din Vercel frontend URL
     credentials: true, // Om du skickar cookies eller autentisering, behåll detta
   })
 );
